@@ -1,4 +1,4 @@
-%% Sine sum function
+% Sine sum function
 % Creates Sn vector
 function Sn=sinesum(t,b)
 for jj=1:1:length(t)

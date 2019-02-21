@@ -1,9 +1,11 @@
-%% Test sine sum
+% Test sine sum
 % This function test function of sinesum in compare with hand calculation
-function test_sinesum()
+function test_sinesum(t,b)
 t=[-pi/2;pi/4];
 b=[4;-3];
 Sntest(1,1)=b(1,1)*sin(t(1,1))+b(2,1)*sin(2*t(1,1));
 Sntest(2,1)=b(1,1)*sin(t(2,1))+b(2,1)*sin(2*t(2,1));
-Sn=sinesum(t,b)
+Sn=sinesum(t,b);
+c=Sntest-Sn;
+fprintf('The difference between hand calculation and sinesum function is %.2f. \n', c)
 end
