@@ -1,7 +1,7 @@
 function [I]=midpoint_vec(y,a,b,n)
 h=(b-a)/n;
 t=linspace(a+h/2,b-h/2,n);
-I=h*sum(f(x));
+I=h*sum(y(t));
 end
 
 % I=h*(y(a)+y(b))/2;
