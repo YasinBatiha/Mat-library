@@ -12,6 +12,3 @@ computed=Int_trapziodal(y,1.2,4.4,2);
 diff=eps(expected)*1e+2;
 err=abs(expected-computed);
 assert(err<diff, computed);
-
-%%
-
