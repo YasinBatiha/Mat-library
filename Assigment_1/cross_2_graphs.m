@@ -14,7 +14,7 @@ n=a;    % Initial value of x.
 c=1;    % Control value for 
 % Checking function
 for ii=1:1:N
-    n=n+ii*(b-a)/N;
+    n=a+ii*(b-a)/N;
     if abs(f(n)-g(n))<epsilon
         fprintf('The solution is: x=%.4f. \n ',n)
         c=0;
