@@ -1,17 +1,28 @@
 clc
 clear all
 close all
-N=50;
+N=100;
 M=1000;
-f=@(x)1/pi*x;
+f=@(x)exp(-(x-pi));
+a=-pi;
+b=pi;
 % Matrix method
-for ii=1:N
-    for jj=1:N
-      A(ii,jj) = Int_trapziodal(@(x)sin(jj*x)*sin(ii*x),-pi,pi,M);
+% A=ones(N);
+A(1,1)=1;
+for pp=2:N
+A(pp,1)= Int_trapziodal(@(x)sin((pp-1)*x),a,b,M);
+end
+for pp=2:N
+A(1,pp)= Int_trapziodal(@(x)sin((pp-1)*x),a,b,M);
+end
+for ii=2:N
+    for jj=2:N
+      A(ii,jj) = Int_trapziodal(@(x)sin((jj-1)*x)*sin((ii-1)*x),a,b,M);
     end
 end
-for ii=1:N
-    fc(ii,1) = Int_trapziodal_fc(f,-pi,pi,M,ii);
+fc(1,1) = Int_trapziodal(f,a,b,M);
+for ii=2:N
+    fc(ii,1) = Int_trapziodal_fc(f,a,b,M,ii-1);
 end
 b=A\fc;
 
