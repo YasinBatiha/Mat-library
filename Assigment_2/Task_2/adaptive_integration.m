@@ -21,5 +21,8 @@ else
 end
 semilogy(n,diff)
 ylim([eps,1e-1])
+title('convergence')
+ylabel('\epsilon - error')
+xlabel('n - number of elements')
 end
 
