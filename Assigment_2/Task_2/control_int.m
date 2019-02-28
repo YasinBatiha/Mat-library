@@ -8,4 +8,4 @@ f=@(x)x.^0.5; % Function
 method=0;   % Method=1 - Midpoint, Method=0 - Trapezoidal
 eps=10^(-10); % Tolerance
 % n is the number of elements
-[n] = adaptive_integration(f,a,b,eps,method);
+number_of_elements = adaptive_integration(f,a,b,eps,method)
