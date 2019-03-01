@@ -8,8 +8,8 @@ Sn=sinesum(t,b);    % calculating the approximated function
 f1=f(t);
 plot(t,f1,'b')
 hold on
-plot(t,Sn,'r')
+plot(t,Sn,'k')
 legend('Exact','Sines approximation')
 title('Sines Approximation')
-print(filename,'-depsc')
+print(filename,'-djpeg')
 end

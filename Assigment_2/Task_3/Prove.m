@@ -1,9 +1,9 @@
 clc
 clear all
 close all
-N=100;   % number of coefficients
-M=1000; % number of elements
-f=@(x)exp(-(x-pi)); % function to be approximated
+N=3;   % number of coefficients
+M=100; % number of elements
+f=@(x)x/pi; % function to be approximated
 % calulating matrix A from equation A times b =fc
 for ii=1:N
     for jj=1:N
@@ -20,16 +20,17 @@ b=A\fc;
 for kk=1:N
 b1(kk,1)=1/pi*(Int_trapziodal_fc(f,-pi,pi,M,kk));
 end
+diff=b-b1
 % plotting results
-t=(-pi:2*pi/M:pi)';
-Sn=sinesum(t,b);
-f1=f(t);
-plot(t,f1,'b','LineWidth',0.5)
-hold on
-plot(t,Sn,'r','LineWidth',1.5)
-Sn1=sinesum(t,b1);
-plot(t,Sn1,'g','LineWidth',1)
-legend('Exact','Matrix definition','bn individually')
-title('Approximation')
+% t=(-pi:2*pi/M:pi)';
+% Sn=sinesum(t,b);
+% f1=f(t);
+% plot(t,f1,'b','LineWidth',0.5)
+% hold on
+% plot(t,Sn,'r','LineWidth',1.5)
+% Sn1=sinesum(t,b1);
+% plot(t,Sn1,'g','LineWidth',1)
+% legend('Exact','Matrix definition','bn individually')
+% title('Approximation')
 
 
