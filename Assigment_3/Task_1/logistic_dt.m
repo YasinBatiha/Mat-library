@@ -26,6 +26,9 @@ for kk=1:Max_steps
     hold on
     plot(t(1:max_local(kk+1),kk+1),y(1:max_local(kk+1),kk+1))
     legend(['dt = ', num2str(dt*2) ,''],['dt = ', num2str(dt) ,''])
+    title('Logistic model')
+    xlabel('t [min]')
+    ylabel('N[-]')
     % asking to continue
     q=input('If you are not satisfied and want to continue, please enter 1. \n ');
     c=kk;
