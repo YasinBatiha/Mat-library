@@ -1,40 +1,39 @@
 clc
 close all
 
-omega = 1;
-P = 2*pi/omega;
-dt = P/20;
-T = 3*P;
-N_t = floor(T/dt);
-t = linspace(0, N_t*dt, N_t+1);
+omega = 2;  % Natural frequncy omegra = sqrt(k/m)
+P = 2*pi/omega; % Period
+dt = P/60;  % time step
+T = 3*P;    % time interval t = (0, T)
+N_t = floor(T/dt);  % number of elements
+t = linspace(0, N_t*dt, N_t+1); % time vector
+u = zeros(N_t+1, 1);    % displacment vector
+v = zeros(N_t+1, 1);  % speed vector
 
-u = zeros(N_t+1, 1);
-v = zeros(N_t+1, 1);
-
-% Initial condition
+% Initial conditions
 X_0 = 2;
 u(1) = X_0;
 v(1) = 0;
 
-% Step equations forward in time
+% Step equations forward in time - forward Euler
 for n = 1:N_t
     u(n+1) = u(n) + dt*v(n);
     v(n+1) = v(n) - dt*omega^2*u(n);
 end
-% % Plotting this method performance
+% % Plotting forward Euler performance
 % plot(t, u, 'b-', t, X_0*cos(omega*t), 'r--');
 % legend('numerical', 'exact', 'Location','northwest');
 % xlabel('t');
 
-[ec, ep] = osc_energy(u, v, omega);
-
-for ii=1:length(ec)
-    E(ii)=ec(ii)+ep(ii);
-end
-
+[ec, ep] = osc_energy(u, v, omega); % Calling function that compute potencial and kinetic energy
+E=ec+ep;
+% Plotting the results
 plot(t,E)
 hold on
 plot(t,ec)
 plot(t,ep)
+xlabel('t [s]')
+ylabel('E [J]')
+title('Forward Euler')
 legend('E','ec','ep')
 
